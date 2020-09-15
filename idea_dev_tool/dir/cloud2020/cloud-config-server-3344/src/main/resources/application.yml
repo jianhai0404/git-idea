@@ -1,0 +1,22 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          # 浏览器访问：localhost:3344/master/config-dev.yml（响应yml格式）
+          # 浏览器访问：http://localhost:3344/config-dev/master（响应json格式）
+          uri: https://github.com/jianhai0404/cloud-config.git #git上面的仓库名字
+          search-paths:
+            - springcloud-config
+      label: master
+
+#服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
